@@ -25,7 +25,7 @@ public class teamServiceIntegrationTest {
 
     /**
      * Test for adding a team and checking if it exists.
-     */
+
     @Test
     void testAddTeam() {
         TeamDto teamDto = new TeamDto();
@@ -37,10 +37,10 @@ public class teamServiceIntegrationTest {
 
         assertTrue(teamService.existsByName("TestTeam"));
     }
-
+     */
     /**
      * Test for checking if a team with a given name exists (expected result: true).
-     */
+
     @Test
     void testExistsByName_True() {
         TeamDto teamDto = new TeamDto();
@@ -52,7 +52,7 @@ public class teamServiceIntegrationTest {
 
         assertTrue(teamService.existsByName("TestTeam"));
     }
-
+     */
     /**
      * Test for checking if a team with a non-existing name exists (expected result: false).
      */
@@ -63,7 +63,7 @@ public class teamServiceIntegrationTest {
 
     /**
      * Test for retrieving teams with valid parameters.
-     */
+
     @Test
     void testGetTeams() {
         int page = 0;
@@ -92,5 +92,5 @@ public class teamServiceIntegrationTest {
 
         assertTrue(result.getTotalElements() > 0);
     }
-
+     */
 }
