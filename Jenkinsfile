@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'main' , url: 'https://github.com/ioannis-mac/proje_m2i.git'
+                git branch: 'main' , url: 'https://github.com/ioannis-mac/proje_m2i.git', credentialsId: 'ioannis-mac-projet-fil-rouge'
             }
         }
         stage('Maven clean') {
