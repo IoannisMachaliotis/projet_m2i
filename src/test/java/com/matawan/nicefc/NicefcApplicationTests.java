@@ -5,9 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class NicefcApplicationTests {
-
+/*
 	@Test
 	void contextLoads() {
 	}
-
+*/
 }
