@@ -37,7 +37,7 @@ pipeline {
                 archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
             }
         }
-        /*stage('SonarQube Analysis') {
+        stage('SonarQube Analysis') {
             steps {
                 // Execute SonarQube analysis
                 script {
@@ -46,7 +46,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }/*
         stage('SonarQube Analysis') {
             steps {
                 // Execute SonarQube analysis
