@@ -10,13 +10,32 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'main' , url: 'https://github.com/younesaa/proje_m2i'
+                git branch: 'main' , url: 'https://github.com/ioannis-mac/proje_m2i.git'
+            }
+        }
+        stage('Maven clean') {
+            steps {
+                sh "mvn clean"
+                echo "Stage clean has finished"
+            }
+        }
+        stage('Maven test') {
+            steps {
+                sh "mvn test"
+                echo "Stage test has finished"
             }
         }
         stage('Build Maven') {
             steps {
                 sh "mvn -DskipTests clean package"
+                echo "Stage build has finished"
                }
+        }
+        stage('Archive Artifacts') {
+            steps {
+                // Archive the artifacts
+                archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+            }
         }
         /*stage('SonarQube Analysis') {
             steps {
@@ -46,12 +65,12 @@ pipeline {
                 waitForQualityGate abortPipeline: true
               }
             }
-        }*/
+        }
         stage("Nexus"){
             steps{
                 nexusArtifactUploader artifacts: [[artifactId: 'my-app', classifier: '', file: 'target/my-app-1.2.jar', type: 'jar']], credentialsId: 'nexus_pwd', groupId: 'com.mycompany.app', nexusUrl: '10.185.11.74:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'repo1',
                     version: "$BUILD_TIMESTAMP"
             }
-        }
+        }*/
     }
 }
