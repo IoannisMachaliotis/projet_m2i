@@ -53,33 +53,19 @@ pipeline {
             }
         }
         
-        stage('Docker Login') {
+        stage('Docker Login Push Clean') {
             steps {
                 script {
                     // Login to Docker Hub
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
+                        sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+                        sh "docker rmi ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} || true"
                     }
                 }
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    // Push the Docker image to Docker Hub
-                    sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
-                }
-            }
-        }
-        stage('Clean Up') {
-            steps {
-                script {
-                    // Clean up local Docker images to free space
-                    sh "docker rmi ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} || true"
-                }
-            }
-        }
 
         /*
         stage('SonarQube Analysis') {
