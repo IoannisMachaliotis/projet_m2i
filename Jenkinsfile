@@ -16,21 +16,18 @@ pipeline {
         stage('Maven clean') {
             steps {
                 sh "mvn clean"
-                echo "Stage clean has finished"
             }
         }
         stage('Maven test') {
             steps {
-                sh "docker-compose -f docker-compose-test.yml up --build"
+                sh "docker-compose -f docker-compose-test.yml up -d --build"
                 sh "mvn test"
-                echo "Stage test has finished"
-                sh "docker-compose down -v"
+                sh "docker stop $(docker ps -a -q)"
             }
         }
         stage('Build Maven') {
             steps {
                 sh "mvn -DskipTests clean package"
-                echo "Stage build has finished"
                }
         }
         stage('Archive Artifacts') {
