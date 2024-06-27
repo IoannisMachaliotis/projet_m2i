@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Maven test') {
             steps {
-                sh "docker-compose down -v && docker-compose -f docker-compose-test.yml up --build"
+                sh "docker-compose -f docker-compose-test.yml up --build"
                 sh "mvn test"
                 echo "Stage test has finished"
                 sh "docker-compose down -v"
