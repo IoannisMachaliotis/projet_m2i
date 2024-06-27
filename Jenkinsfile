@@ -21,6 +21,7 @@ pipeline {
         }
         stage('Maven test') {
             steps {
+                sh "docker-compose up --build"
                 sh "mvn test"
                 echo "Stage test has finished"
             }
