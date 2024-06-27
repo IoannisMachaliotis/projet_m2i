@@ -12,6 +12,7 @@ services:
 
   app:
     build: .
+    image: ioannismac/projet_m2i_app:latest
     depends_on:
       - postgres
     environment:

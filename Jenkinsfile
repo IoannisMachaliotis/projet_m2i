@@ -24,6 +24,7 @@ pipeline {
                 sh "mvn test"
                 script{
                     sh 'docker stop $(docker ps -a -q) || true'
+                    sh 'docker container prune -f'
                 }
             }
         }
@@ -47,7 +48,15 @@ pipeline {
                     }
                 }
             }
-        }/*
+        }
+        
+        stage('Docker build and push'){
+            steps{
+                sh "docker-compose build"
+                sh "docker push ioannismac/projet_m2i_app:latest"
+            }
+        }
+        /*
         stage('SonarQube Analysis') {
             steps {
                 // Execute SonarQube analysis
