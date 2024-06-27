@@ -22,7 +22,9 @@ pipeline {
             steps {
                 sh "docker-compose -f docker-compose-test.yml up -d --build"
                 sh "mvn test"
-                sh "docker stop ${docker ps -a -q}"
+                script{
+                    sh 'docker stop $(docker ps -a -q) || true'
+                }
             }
         }
         stage('Build Maven') {
