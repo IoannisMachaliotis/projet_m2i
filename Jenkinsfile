@@ -68,8 +68,9 @@ pipeline {
         }
         stage('Terraform'){
             steps{
-                // sh "az login --service-principal -u $(servicePrincipalId) -p $(servicePrincipalKey) --tenant $(tenantId)"
+                #sh "az login --service-principal -u $(servicePrincipalId) -p $(servicePrincipalKey) --tenant $(tenantId)"
                 sh "terraform init"
+                sh "whoami"
                 sh "az --version"
                 sh "az account show"
                 sh "terraform plan"
