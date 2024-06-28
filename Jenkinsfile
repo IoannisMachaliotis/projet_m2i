@@ -11,6 +11,9 @@ pipeline {
         DOCKER_REGISTRY = "ioannismac"
         DOCKER_IMAGE_NAME = "projet_m2i_app"
         DOCKER_IMAGE_TAG = "latest"
+        tenantId = $(az account show | grep tenantId)
+        servicePrincipalKey = $(az account show | grep servicePrincipalKey)
+        servicePrincipalId = $(az account show | grep servicePrincipalId)
     }
  
     stages {
@@ -68,9 +71,10 @@ pipeline {
         }
         stage('Terraform'){
             steps{
-                //sh "az login --service-principal -u $(servicePrincipalId) -p $(servicePrincipalKey) --tenant $(tenantId)"
-                // sh "terraform init"
-                sh "whoami"
+                // script{
+                //     withCredentials([usernamePassword(credentialsId: '<service_principal>', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+                //     }
+                sh "az login --user machaliotis.ioannis@m2iFormation1.onmicrosoft.com --password Newpass2345!"
                 sh "az --version"
                 sh "az account show"
                 sh "terraform plan"
