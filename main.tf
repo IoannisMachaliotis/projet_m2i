@@ -106,6 +106,6 @@ resource "azurerm_linux_virtual_machine" "main" {
   computer_name = "hostname"
   admin_ssh_key {
     username   = "testadmin"
-    public_key = file("/home/ubuntu-unix/.ssh/id_azure")
+    public_key = file("~/.ssh/id_azure")
   }
 }
