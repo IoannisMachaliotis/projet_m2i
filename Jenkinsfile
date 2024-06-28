@@ -83,7 +83,7 @@ pipeline {
         stage('Ansible'){
             steps{
                 script{
-                    sh 'ansible-playbook docker_app_setup.yml '
+                    sh 'ansible-playbook -i hosts docker_app_setup.yml '
                     sh 'curl http://$(terraform output -raw public_ip):8081'
                 }
             }
