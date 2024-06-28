@@ -75,10 +75,12 @@ pipeline {
                 // }
                 // sh "az --version"
                 // sh "az account show"
-                sh "terraform init"
-                sh "terraform plan"
-                sh "terraform apply -auto-approve"
-                sh "terraform refresh"
+                script{
+                    sh "terraform init"
+                    sh "terraform plan"
+                    sh "terraform apply -auto-approve"
+                    sh "terraform refresh"
+                }
             }
         }
         /*
