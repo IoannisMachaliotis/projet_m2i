@@ -80,9 +80,9 @@ pipeline {
                 }
             }
         }
-        stage('Preparation for Ansible'){
-            sh "bash aScriptToPutpublicIp.sh"
-            // steps {
+        stage('Preparation for Ansible'){   
+            steps {
+                sh "bash aScriptToPutpublicIp.sh"
             //     script {
             //         // Login to Docker Hub
             //         withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -92,7 +92,7 @@ pipeline {
             //             sh "docker rmi ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} || true"
             //         }
             //     }
-            // }
+            }
         }
         /*
         stage('Ansible'){
