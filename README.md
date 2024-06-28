@@ -16,6 +16,6 @@ Technologies used in this project:
 
 # Results
 
-Sample image of the pipeline where nsible is not yet configured: 
+Sample image of the pipeline where Ansible is not yet configured: 
 
 ![alt text](https://github.com/ioannis-mac/proje_m2i/blob/main/Pipeline-stage-view.png?raw=true)
