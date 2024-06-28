@@ -53,7 +53,7 @@ pipeline {
             }
         }
         
-        stage('Docker Build Login Push Clean') {
+        stage('Docker Login Build Push Clean') {
             steps {
                 script {
                     // Login to Docker Hub
@@ -66,21 +66,17 @@ pipeline {
                 }
             }
         }
-
-
-        /*
-        stage('SonarQube Analysis') {
-            steps {
-                // Execute SonarQube analysis
-                script {
-                    def scannerHome = tool 'sonar_scanner_tool'
-                    withSonarQubeEnv('sonarqubeserver') {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=my-app \
-                        -Dsonar.java.binaries=target/**"
-                    }
-                }
-            }
+        stage('Terraform'){
+            sh "terraform init"
+            sh "terraform plan"
+            sh "terraform apply -auto-approve"
         }
+        /*
+        stage('Ansible'){
+            sh 'ansible -i all '
+        }
+        */
+/*
         stage("Quality Gate") {
             steps {
               timeout(time: 3, unit: 'MINUTES') {
