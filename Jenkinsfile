@@ -12,7 +12,6 @@ pipeline {
         DOCKER_IMAGE_NAME = "projet_m2i_app"
         DOCKER_IMAGE_TAG = "latest"
         AZURE_CREDENTIALS_ID = 'azure-credentials' 
-        PATH = "/mnt/c/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/az:${env.PATH}"
     }
  
     stages {
@@ -77,10 +76,6 @@ pipeline {
                 // sh "az --version"
                 // sh "az account show"
                 script{
-                    sh '''
-                        az login --username machaliotis.ioannis@m2iFormation1.onmicrosoft.com --password Passazure1!
-                        az account set --subscription 9a86476e-b022-4aa8-9372-dab324cf625d
-                    '''
                     sh "terraform init"
                     sh "terraform plan -out=planfile "
                     sh "terraform apply -auto-approve planfile"
