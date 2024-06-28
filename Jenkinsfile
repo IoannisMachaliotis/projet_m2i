@@ -77,8 +77,8 @@ pipeline {
                 // sh "az account show"
                 script{
                     sh "terraform init"
-                    sh "terraform plan"
-                    sh "terraform apply -auto-approve"
+                    sh "terraform plan -out=planfile "
+                    sh "terraform apply -auto-approve planfile"
                     sh "terraform refresh"
                 }
             }
