@@ -12,6 +12,7 @@ pipeline {
         DOCKER_IMAGE_NAME = "projet_m2i_app"
         DOCKER_IMAGE_TAG = "latest"
         AZURE_CREDENTIALS_ID = 'azure-credentials' 
+        PATH = "/mnt/c/Program Files (x86)/Microsoft SDKs/Azure/CLI2/wbin/az:${env.PATH}"
     }
  
     stages {
