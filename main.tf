@@ -1,12 +1,12 @@
 # Create a resource group
 resource "azurerm_resource_group" "myGroup_younes" {
-  name     = "myGroup_terraform_younes_1"
+  name     = "myGroup_terraform_younes_3"
   location = "West Europe"
 }
 
 # Create a virtual network
 resource "azurerm_virtual_network" "main" {
-  name                = "younes-network"
+  name                = "younes-network3"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.myGroup_younes.location
   resource_group_name = azurerm_resource_group.myGroup_younes.name
@@ -22,7 +22,7 @@ resource "azurerm_subnet" "internal" {
 
 # Create a public IP address
 resource "azurerm_public_ip" "public_ip" {
-  name                = "acceptanceTestPublicIp1"
+  name                = "acceptanceTestPublicIp3"
   resource_group_name = azurerm_resource_group.myGroup_younes.name
   location            = azurerm_resource_group.myGroup_younes.location
   allocation_method   = "Dynamic"
@@ -30,7 +30,7 @@ resource "azurerm_public_ip" "public_ip" {
 
 # Create a network interface
 resource "azurerm_network_interface" "main" {
-  name                = "younes-nic"
+  name                = "younes-nic3"
   location            = azurerm_resource_group.myGroup_younes.location
   resource_group_name = azurerm_resource_group.myGroup_younes.name
 
@@ -45,7 +45,7 @@ resource "azurerm_network_interface" "main" {
 
 # Create a Network Security Group
 resource "azurerm_network_security_group" "nsg" {
-  name                = "younes-nsg"
+  name                = "younes-nsg3"
   location            = azurerm_resource_group.myGroup_younes.location
   resource_group_name = azurerm_resource_group.myGroup_younes.name
 
