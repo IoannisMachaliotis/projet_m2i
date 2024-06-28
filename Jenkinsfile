@@ -76,6 +76,10 @@ pipeline {
                 // sh "az --version"
                 // sh "az account show"
                 script{
+                    sh '''
+                        az login --username machaliotis.ioannis@m2iFormation1.onmicrosoft.com --password Passazure1!
+                        az account set --subscription 9a86476e-b022-4aa8-9372-dab324cf625d
+                    '''
                     sh "terraform init"
                     sh "terraform plan -out=planfile "
                     sh "terraform apply -auto-approve planfile"
