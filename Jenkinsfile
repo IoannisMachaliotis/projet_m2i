@@ -11,9 +11,9 @@ pipeline {
         DOCKER_REGISTRY = "ioannismac"
         DOCKER_IMAGE_NAME = "projet_m2i_app"
         DOCKER_IMAGE_TAG = "latest"
-        tenantId = $(az account show | grep tenantId)
-        servicePrincipalKey = $(az account show | grep servicePrincipalKey)
-        servicePrincipalId = $(az account show | grep servicePrincipalId)
+        // tenantId = $(az account show | grep tenantId)
+        // servicePrincipalKey = $(az account show | grep servicePrincipalKey)
+        // servicePrincipalId = $(az account show | grep servicePrincipalId)
     }
  
     stages {
