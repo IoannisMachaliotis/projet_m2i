@@ -82,7 +82,7 @@ pipeline {
         }
         stage('Preparation for Ansible'){   
             steps {
-                sh "bash aScriptToPutpublicIp.sh"
+                sh "aScriptToPutpublicIp.sh"
             //     script {
             //         // Login to Docker Hub
             //         withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
