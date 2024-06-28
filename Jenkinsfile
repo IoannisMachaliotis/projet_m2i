@@ -11,9 +11,7 @@ pipeline {
         DOCKER_REGISTRY = "ioannismac"
         DOCKER_IMAGE_NAME = "projet_m2i_app"
         DOCKER_IMAGE_TAG = "latest"
-        // tenantId = $(az account show | grep tenantId)
-        // servicePrincipalKey = $(az account show | grep servicePrincipalKey)
-        // servicePrincipalId = $(az account show | grep servicePrincipalId)
+        AZURE_CREDENTIALS_ID = 'azure-credentials' 
     }
  
     stages {
@@ -72,16 +70,16 @@ pipeline {
         stage('Terraform'){
             steps{
                 // script{
-                //     withCredentials([usernamePassword(credentialsId: '<service_principal>', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
-                //     }
-                sh "az login --user machaliotis.ioannis@m2iFormation1.onmicrosoft.com --password Newpass2345!"
-                sh "az --version"
-                sh "az account show"
+                //     withCredentials([azureServicePrincipal(credentialsId: env.AZURE_CREDENTIALS_ID, subscriptionIdVariable: 'AZURE_SUBSCRIPTION_ID', clientIdVariable: 'AZURE_CLIENT_ID', clientSecretVariable: 'AZURE_CLIENT_SECRET', tenantIdVariable: 'AZURE_TENANT_ID')]) {
+                // sh "az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID"
+                // }
+                // sh "az --version"
+                // sh "az account show"
+                sh "terraform init"
                 sh "terraform plan"
                 sh "terraform apply -auto-approve"
                 sh "terraform refresh"
             }
-
         }
         /*
         stage('Ansible'){
