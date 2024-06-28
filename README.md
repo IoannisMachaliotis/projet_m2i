@@ -1,4 +1,5 @@
-# Title of the project: End to end pipeline on Jenkins for java cloud application to run on Azure provider
+# PROJECT TITLE: 
+# End to end pipeline on Jenkins for java cloud application to run on Azure provider
 
 For the details and full documentation of backend java application please take a look at the backend made by [@younesaa](https://github.com/younesaa) (big thanks 😉) [here](https://github.com/younesaa/proje_m2i) 
 
