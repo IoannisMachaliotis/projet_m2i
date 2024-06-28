@@ -94,10 +94,14 @@ pipeline {
             //     }
             }
         }
-        /*
         stage('Ansible'){
-            sh 'ansible-playbook docker_app_setup.yml '
+            steps{
+                scripts{
+                    sh 'ansible-playbook docker_app_setup.yml '
+                    sh 'curl testadmin@$(terraform output -raw public_ip)'
+                }
+            }
+           
         }
-        */
     }
 }
