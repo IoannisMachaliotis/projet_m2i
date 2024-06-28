@@ -23,7 +23,7 @@ pipeline {
         stage('Maven clean test') {
             steps {
                 sh "mvn clean"
-                sh "sudo docker-compose -f docker-compose-test.yml up -d --build"
+                sh "docker-compose -f docker-compose-test.yml up -d --build"
                 sh "mvn test"
                 script{
                     sh 'docker stop $(docker ps -a -q) || true'
