@@ -26,3 +26,6 @@ Sample image of SonaQube
 
 Sample image of Dockerhub
 ![alt text](https://github.com/ioannis-mac/proje_m2i/blob/main/Dockerhub.png?raw=true)
+
+Sample image of Microsoft Azure deployment infrastracture
+![alt text](https://github.com/ioannis-mac/proje_m2i/blob/main/Dockerhub.png?raw=true)
