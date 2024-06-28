@@ -67,9 +67,12 @@ pipeline {
             }
         }
         stage('Terraform'){
-            sh "terraform init"
-            sh "terraform plan"
-            sh "terraform apply -auto-approve"
+            steps{
+                sh "terraform init"
+                sh "terraform plan"
+                sh "terraform apply -auto-approve"
+            }
+
         }
         /*
         stage('Ansible'){
