@@ -80,20 +80,6 @@ pipeline {
                 }
             }
         }
-        stage('Preparation for Ansible'){   
-            steps {
-                sh "aScriptToPutpublicIp.sh"
-            //     script {
-            //         // Login to Docker Hub
-            //         withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-            //             sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
-            //             sh "docker-compose build"
-            //             sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
-            //             sh "docker rmi ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} || true"
-            //         }
-            //     }
-            }
-        }
         stage('Ansible'){
             steps{
                 scripts{
