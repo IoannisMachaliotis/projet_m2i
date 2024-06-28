@@ -68,7 +68,10 @@ pipeline {
         }
         stage('Terraform'){
             steps{
+                // sh "az login --service-principal -u $(servicePrincipalId) -p $(servicePrincipalKey) --tenant $(tenantId)"
                 sh "terraform init"
+                sh "az --version"
+                sh "az account show"
                 sh "terraform plan"
                 sh "terraform apply -auto-approve"
                 sh "terraform refresh"
@@ -77,22 +80,8 @@ pipeline {
         }
         /*
         stage('Ansible'){
-            sh 'ansible -i all '
+            sh 'ansible-playbook docker_app_setup.yml '
         }
         */
-/*
-        stage("Quality Gate") {
-            steps {
-              timeout(time: 3, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
-              }
-            }
-        }
-        stage("Nexus"){
-            steps{
-                nexusArtifactUploader artifacts: [[artifactId: 'my-app', classifier: '', file: 'target/my-app-1.2.jar', type: 'jar']], credentialsId: 'nexus_pwd', groupId: 'com.mycompany.app', nexusUrl: '10.185.11.74:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'repo1',
-                    version: "$BUILD_TIMESTAMP"
-            }
-        }*/
     }
 }
